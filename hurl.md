@@ -2,21 +2,29 @@
 
 # 1、hurl 简介
 
-everything hurl 是一个命令行工具，有windows （hurl.exe） 和 linux （hurl） 两个平台版本。目前支持的协议有file，ftp, sftp
+everything hurl 是一个命令行工具，有windows(hurl.exe) 和 linux(hurl)两个平台版本。
+目前支持的协议有file、ftp、 sftp、 http,、https（http2、http3），所以hurl是综合传输工具（ps：作者的定义）
 
-, http, https（http2、http3），所以hurl是综合传输工具（来自jx的定义）
+windows平台，cmd进入的hurl.exe的目录 ，hurl.exe  后面跟参数即可
+linux平台执行请确保有 x 权限（执行权限）chmod +x hurl，./hurl 后面跟参数即可
+为了方便执行，可以直接扔在环境变量目录里面，或者信息环境变量
+
+新版特效：
+最新版本2.0，遵循clean code安全编码规范。
+
+演示命令为linux平台
 
 # 2、帮助命令
 
-./hurl -h, --h, -help, --help
+./hurl  --help
 
 ```shell
-./hurl -h
+./hurl --help
 Usage of ./hurl:
   -I    whether HEAD request http request
   -L    whether to open the redirect request
   -byte int
-        byte array max length default 10M (default 10485760)
+        byte array max length default 1M (default 1048576)
   -crt string
         enter the crt file
   -data string
@@ -46,7 +54,7 @@ Usage of ./hurl:
   -re string
         enter the regexp rule to match
   -type string
-        walk the path type (default "all")
+        walk the path type, value with file or dir
   -u int
         enter the number of concurrent (default 5)
   -upload string
@@ -60,25 +68,33 @@ Usage of ./hurl:
         print hurl tool version
   -walk
         whether walk to the path
+
+# -h, --h, -help, --help 都能查看帮助信息
+
 ```
 
 # 3、版本信息
 
-./hurl -v, --v , -version , --version
+./hurl  --version
 
 ```shell
-./hurl -v
-everything is hurl v1.0.0/linux @jx
+./hurl --version
+everything hurl v2.0.0 for linux
 
-Protocols:file ftp sftp http https;
-EMail:1245863260@qq.com g1245863260@gmail.com;
+Protocols:file, ftp, sftp, http, https;
+EMail:1245863260@qq.com, g1245863260@gmail.com;
 Github:https://github.com/stonebirdjx;
 Gitee:https://gitee.com/stonebirdjx;
+
+# -v ，--v， -version， --version，都能查看版本信息
 ```
+
+
 
 # 4、file协议使用说明
 
-file协议 url 为 file://path 或者 path 即可
+file协议 url 为 file:///path 或者 path 即可，
+windows平台不能以 file:///e:/xxx/xxx的方式访问，使用绝对路径或者相对路径即可
 
 ## 4.1、查看单个文件
 
